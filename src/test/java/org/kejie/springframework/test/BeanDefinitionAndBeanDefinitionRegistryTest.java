@@ -1,8 +1,9 @@
-package org.kejie.springframework.test.ioc;
+package org.kejie.springframework.test;
 
 import org.junit.Test;
 import org.kejie.springframework.beans.factory.config.BeanDefinition;
 import org.kejie.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.kejie.springframework.test.service.HelloService;
 
 /**
  * @author guokejie

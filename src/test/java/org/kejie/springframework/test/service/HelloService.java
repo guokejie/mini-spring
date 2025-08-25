@@ -1,4 +1,4 @@
-package org.kejie.springframework.test.ioc;
+package org.kejie.springframework.test.service;
 
 public class HelloService {
     public String sayHello() {
