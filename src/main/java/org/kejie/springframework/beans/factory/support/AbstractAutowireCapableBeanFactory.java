@@ -3,6 +3,7 @@ package org.kejie.springframework.beans.factory.support;
 import cn.hutool.core.bean.BeanUtil;
 import org.kejie.springframework.beans.BeansException;
 import org.kejie.springframework.beans.PropertyValue;
+import org.kejie.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.kejie.springframework.beans.factory.config.BeanDefinition;
 import org.kejie.springframework.beans.factory.config.BeanReference;
 
@@ -12,7 +13,8 @@ import org.kejie.springframework.beans.factory.config.BeanReference;
  * @author guokejie
  * @Date 2025/8/24 16:07
  */
-public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory {
+public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory
+        implements AutowireCapableBeanFactory {
 
     private InstantiationStrategy instantiationStrategy = new SimpleInstantiationStrategy();
 

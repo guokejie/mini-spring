@@ -3,6 +3,7 @@ package org.kejie.springframework.beans.factory.support;
 import org.kejie.springframework.beans.BeansException;
 import org.kejie.springframework.beans.factory.BeanFactory;
 import org.kejie.springframework.beans.factory.config.BeanDefinition;
+import org.kejie.springframework.beans.factory.config.ConfigurableBeanFactory;
 
 /**
  * 这里用到了模板方法设计模式
@@ -10,7 +11,9 @@ import org.kejie.springframework.beans.factory.config.BeanDefinition;
  * @author guokejie
  * @Date 2025/8/24 15:55
  */
-public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements BeanFactory {
+public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements ConfigurableBeanFactory {
+
+
     /**
      * 负责流程控制，不关心具体细节
      * 细节交给抽象类去实现，方便不同实现（XML、注解等）
@@ -28,6 +31,11 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
 
         BeanDefinition beanDefinition = getBeanDefinition(name);
         return createBean(name, beanDefinition);
+    }
+
+    @Override
+    public <T> T getBean(String name, Class<T> requiredType) throws BeansException {
+        return (T) getBean(name);
     }
 
     /**
