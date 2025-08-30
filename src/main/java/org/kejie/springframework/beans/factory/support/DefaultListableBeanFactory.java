@@ -3,6 +3,7 @@ package org.kejie.springframework.beans.factory.support;
 import org.kejie.springframework.beans.BeansException;
 import org.kejie.springframework.beans.factory.ConfigurableListableBeanFactory;
 import org.kejie.springframework.beans.factory.config.BeanDefinition;
+import org.kejie.springframework.beans.factory.config.BeanPostProcessor;
 import org.kejie.springframework.beans.factory.config.BeanReference;
 import org.kejie.springframework.beans.factory.config.ConfigurableBeanFactory;
 
@@ -32,6 +33,12 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
         }
         return beanDefinition;
     }
+
+    @Override
+    public void preInstantiateSingletons() throws BeansException {
+        beanDefinitionMap.keySet().forEach(this::getBean);
+    }
+
 
     @Override
     public boolean containsBeanDefinition(String beanName) {

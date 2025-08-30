@@ -3,7 +3,11 @@ package org.kejie.springframework.beans.factory.support;
 import org.kejie.springframework.beans.BeansException;
 import org.kejie.springframework.beans.factory.BeanFactory;
 import org.kejie.springframework.beans.factory.config.BeanDefinition;
+import org.kejie.springframework.beans.factory.config.BeanPostProcessor;
 import org.kejie.springframework.beans.factory.config.ConfigurableBeanFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 这里用到了模板方法设计模式
@@ -12,6 +16,8 @@ import org.kejie.springframework.beans.factory.config.ConfigurableBeanFactory;
  * @Date 2025/8/24 15:55
  */
 public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements ConfigurableBeanFactory {
+
+    private final List<BeanPostProcessor> beanPostProcessors = new ArrayList<>();
 
 
     /**
@@ -56,4 +62,15 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
      * @throws BeansException
      */
     protected abstract BeanDefinition getBeanDefinition(String beanName) throws BeansException;
+
+    @Override
+    public void addBeanPostProcessor(BeanPostProcessor beanPostProcessor) {
+        // 有则覆盖
+        this.beanPostProcessors.remove(beanPostProcessor);
+        this.beanPostProcessors.add(beanPostProcessor);
+    }
+
+    public List<BeanPostProcessor> getBeanPostProcessors() {
+        return this.beanPostProcessors;
+    }
 }

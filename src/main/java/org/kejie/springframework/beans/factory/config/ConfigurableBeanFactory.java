@@ -7,4 +7,9 @@ import org.kejie.springframework.beans.factory.HierarchicalBeanFactory;
  * @Date 2025/8/27 19:21
  */
 public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, SingletonBeanRegistry {
+
+    /**
+     * @param beanPostProcessor
+     */
+    void addBeanPostProcessor(BeanPostProcessor beanPostProcessor);
 }
