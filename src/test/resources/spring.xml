@@ -16,4 +16,8 @@
     <bean id="car" class="org.kejie.springframework.test.bean.Car">
         <property name="brand" value="porsche"/>
     </bean>
+
+    <bean class="org.kejie.springframework.test.common.CustomBeanFactoryPostProcessor"/>
+
+    <bean class="org.kejie.springframework.test.common.CustomerBeanPostProcessor"/>
 </beans>
